@@ -1,0 +1,30 @@
+{
+  "path": "fixtures/",
+  "baseUrl": "http://www.vayacamping.net",
+  "pathCampingsUrls": "../fixtures/campingsUrls.json",
+  "pathCampingsData": "../fixtures/campingsData.json",
+  "regions": [
+    {
+      "name": "barcelona",
+      "main_url": "http://www.vayacamping.net/espana/catalunya-cataluna/barcelona",
+      "number_of_pages": 5
+    },
+    {
+      "name": "lleida",
+      "main_url": "http://www.vayacamping.net/espana/catalunya-cataluna/lleida",
+      "number_of_pages": 5
+    },
+    {
+      "name": "tarragona",
+      "main_url": "http://www.vayacamping.net/espana/catalunya-cataluna/tarragona",
+      "number_of_pages": 5
+    },
+    {
+      "name": "girona",
+      "main_url": "http://www.vayacamping.net/espana/catalunya-cataluna/girona",
+      "number_of_pages": 10
+    }
+  ]
+}
+
+

@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html ng-app="meanSampleApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>MEAN Sample App</title>
+
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/main.css">
+
+	<script src="js/vendors/angular.min.js"></script>
+	<script src="js/controllers/main.js"></script>
+	<script src="js/services/campings.js"></script>
+	<script src="js/core.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+	<div class="container">
+		<div class="jumbotron text-left">
+			<h1>Campings management page</h1>
+			<h2>Total campings <span class="label label-info"> {{ campings.length }}</span></h2>
+		</div>
+
+        <label class="filters-search">Search by (name, address, location, email, phone): <input ng-model="searchedText"></label>
+
+		<div id="camping-list" class="row left">
+
+				<div class="checkbox camping-line col-xs-12" ng-repeat="camping in campings | filter:searchedText">
+
+                        <div class="col-xs-8">{{ camping.name }}</div>
+                        <div class="col-xs-2">
+						    <button class="btn btn-xs btn-primary" ng-click="showCampingForm = !showCampingForm">Edit</button>
+                        </div>
+                        <div class="col-xs-2">
+						    <button type="submit" class="btn btn-xs btn-danger" ng-click="deleteCamping(camping._id)">Delete</button>
+                        </div>
+
+                        <div class="row" ng-show="showCampingForm">
+                            <div class="col-xs-12 text-left">
+                                <form class="form-camping input-group">
+                                    <div class="form-group">
+                                        <label class="col-xs-2" for="name{{$index}}">Name: </label>
+                                        <div class="col-xs-10">
+                                            <input id="name{{$index}}" type="text" required class="form-control input-sm text-left" placeholder="Camping name" ng-model="camping.name">
+                                        </div>
+                                        <label class="col-xs-2" for="address{{$index}}">Address: </label>
+                                        <div class="col-xs-10">
+                                            <input id="address{{$index}}" type="text" required class="col-xs-6 form-control input-sm text-left" placeholder="Camping address" ng-model="camping.address">
+                                        </div>
+                                        <label class="col-xs-2" for="phone{{$index}}">Phone: </label>
+                                        <div class="col-xs-10">
+                                        <input id="phone{{$index}}" type="text" required class="col-xs-6 form-control input-sm text-left" placeholder="Phone number" ng-model="camping.phone">
+                                        </div>
+                                        <label class="col-xs-2" for="email{{$index}}" >Email: </label>
+                                        <div class="col-xs-10">
+                                            <input id="email{{$index}}" type="text" required class="col-xs-6 form-control input-sm text-left" placeholder="Email address" ng-model="camping.email">
+                                        </div>
+                                        <label class="col-xs-2" for="loc{{$index}}">Location (lon, lat): </label>
+                                        <div class="col-xs-10">
+                                            <input id="loc{{$index}}" type="text" required class="col-xs-6 form-control input-sm text-left" placeholder="Location" ng-model="camping.loc" ng-list>
+                                        </div>
+                                            <!--<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" events="map.events">
+                                        </ui-gmap-google-map>-->
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateCamping(camping._id, {name: camping.name, address: camping.address, phone: camping.phone, email: camping.email, loc: camping.loc})">Save</button>
+                                </form>
+                            </div>
+                        </div>
+
+				</div>
+
+		</div>
+
+
+        <button class="btn btn-primary btn-lg" ng-click="showNewForm = !showNewForm">New Camping</button>
+
+        <div id="camping-form" class="row" ng-show="showNewForm">
+            <div class="col-sm-12 text-left">
+                <form>
+                    <div class="form-group input-group">
+                        <label class="col-xs-2" for="name">Name: </label>
+                        <div class="col-xs-10">
+                        <input type="text" id="name" required class="form-control input-lg text-left" placeholder="Camping name" ng-model="formData.name">
+                        </div>
+                        <label class="col-xs-2" for="name">Address: </label>
+                        <div class="col-xs-10">
+                            <input type="text" id="address" required class="form-control input-lg text-left" placeholder="Camping address" ng-model="formData.address">
+                        </div>
+                        <label class="col-xs-2" for="name">Phone: </label>
+                        <div class="col-xs-10">
+                            <input type="text" id="phone" required class="form-control input-lg text-left" placeholder="Phone number" ng-model="formData.phone">
+                        </div>
+                        <label class="col-xs-2" for="name">Email: </label>
+                        <div class="col-xs-10">
+                            <input type="text" id="email" required class="form-control input-lg text-left" placeholder="Email address" ng-model="formData.email">
+                        </div>
+                        <label class="col-xs-2" for="name">Location (lon, lat): </label>
+                        <div class="col-xs-10">
+                            <input type="text" id="location" required class="form-control input-lg text-left" placeholder="Location" ng-model="formData.loc" ng-list>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createCamping()">Add</button>
+                </form>
+            </div>
+        </div>
+
+
+	</div>
+
+</body>
+</html>

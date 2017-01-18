@@ -1,0 +1,15 @@
+html 					{ overflow-y:scroll; }
+body 					{ padding-top:50px; }
+#camping-list 				{ margin-bottom:30px; }
+#camping-form 	 			{ margin-bottom:50px; }
+.camping-line {
+    margin-top: 2px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.form-camping {
+    margin-top: 15px;
+}
