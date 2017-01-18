@@ -15,17 +15,10 @@ Angular provides the frontend SPA and accesses the API.
 
 - [Node and npm](http://nodejs.org)
 - MongoDB - install it locally - here I am using the test database with the campings collection
-- start MongoDB: run this (for MacOSX) 
-
-'''
-mongod
-'''
-
+- start MongoDB: run this (for MacOSX)  `mongod`
 - some sample data are loaded into the MongoDB by issuing the command from the fixtures directory:
 
-'''
-mongoimport -d test -c campings --file campingsData.json --jsonArray
-'''
+`mongoimport -d test -c campings --file campingsData.json --jsonArray`
 
 ## Installation
 
